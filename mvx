@@ -1,0 +1,35 @@
+action=$1
+
+show_help_menu() {
+    echo
+    echo 'mvx new   [com.xxx.yyy] [artifact_name] ... make new maven repository' 
+    echo 'mvx build                               ... build maven repository' 
+    echo
+}
+
+case $action in 
+new|-n|b)
+    group_id=$2
+    artifact_id=$3
+
+    raise() {
+        if [ -z "$1" ]; then
+            printf "\n$2\n"
+            show_help_menu
+            exit
+        fi
+    }
+
+    raise "$group_id"    "Group ID      missing."
+    raise "$artifact_id" "Artifact Name missing."
+
+    mvn archetype:generate -DgroupId=$group_id -DartifactId=$artifact_id -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+    ;;
+
+build|-b|b)
+    echo hi
+    # do something for build
+    ;;
+*)
+    show_help_menu
+esac
