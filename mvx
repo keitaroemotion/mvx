@@ -27,8 +27,7 @@ new|-n|b)
     ;;
 
 build|-b|b)
-    echo hi
-    # do something for build
+    mvn install
     ;;
 *)
     show_help_menu
