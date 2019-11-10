@@ -26,7 +26,7 @@ new|-n|b)
     mvn archetype:generate -DgroupId=$group_id -DartifactId=$artifact_id -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
     ;;
 
-build|-b|b)
+build|-b|b|i)
     mvn install
     ;;
 *)
